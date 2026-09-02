@@ -292,6 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const fanRight2 = document.querySelector('.fan-right-2');
   const fanLeft3 = document.querySelector('.fan-left-3');
   const fanRight3 = document.querySelector('.fan-right-3');
+  const fanLeft4 = document.querySelector('.fan-left-4');
+  const fanRight4 = document.querySelector('.fan-right-4');
 
   function handleInsightScroll() {
     if (!insightSection || !fanMain) return;
@@ -305,15 +307,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let rawProgress = currentScroll / scrollDistance;
     rawProgress = Math.max(0, Math.min(1, rawProgress));
 
-    // Hold Scroll: interaction finishes at 82%, remaining 18% holds full fan-out lineup
-    const HOLD_START = 0.82;
+    // Hold Scroll: interaction finishes at 85%, remaining 15% holds full 9-mockup lineup
+    const HOLD_START = 0.85;
     let progress = Math.min(1, rawProgress / HOLD_START);
 
     const viewportWidth = window.innerWidth;
-    const stepX = Math.min(145, Math.max(55, viewportWidth * 0.105));
+    const stepX = Math.min(130, Math.max(45, viewportWidth * 0.082));
 
     // PHASE 01: Fade In
-    let pFade = Math.min(1, Math.max(0, progress / 0.16));
+    let pFade = Math.min(1, Math.max(0, progress / 0.14));
     if (insightHeader) insightHeader.style.opacity = pFade;
     if (insightFooter) insightFooter.style.opacity = pFade;
 
@@ -321,8 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fanMain.style.opacity = pFade;
     fanMain.style.transform = `translate(-50%, -50%) scale(${mainScale})`;
 
-    // PHASE 02: Sequential Fan-Out
-    let p1 = Math.min(1, Math.max(0, (progress - 0.18) / 0.30));
+    // PHASE 02: Sequential Fan-Out (4 Stages for 9 Mockups total)
+    // Stage 1: Inner Left/Right (08.jpg, 02.jpg)
+    let p1 = Math.min(1, Math.max(0, (progress - 0.12) / 0.24));
     let x1 = stepX * p1;
     let opacity1 = p1 > 0 ? Math.min(1, p1 * 2) * pFade : 0;
 
@@ -335,7 +338,8 @@ document.addEventListener('DOMContentLoaded', () => {
       fanRight1.style.transform = `translate(calc(-50% + ${x1}px), -50%) scale(${0.88 + p1 * 0.12})`;
     }
 
-    let p2 = Math.min(1, Math.max(0, (progress - 0.40) / 0.32));
+    // Stage 2: Middle Left/Right (05.jpg, 07.jpg)
+    let p2 = Math.min(1, Math.max(0, (progress - 0.30) / 0.26));
     let x2 = stepX * 2 * p2;
     let opacity2 = p2 > 0 ? Math.min(1, p2 * 2) * pFade : 0;
 
@@ -348,7 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
       fanRight2.style.transform = `translate(calc(-50% + ${x2}px), -50%) scale(${0.85 + p2 * 0.15})`;
     }
 
-    let p3 = Math.min(1, Math.max(0, (progress - 0.64) / 0.31));
+    // Stage 3: Outer Left/Right (04.jpg, 03.jpg)
+    let p3 = Math.min(1, Math.max(0, (progress - 0.50) / 0.26));
     let x3 = stepX * 3 * p3;
     let opacity3 = p3 > 0 ? Math.min(1, p3 * 2) * pFade : 0;
 
@@ -359,6 +364,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fanRight3) {
       fanRight3.style.opacity = opacity3;
       fanRight3.style.transform = `translate(calc(-50% + ${x3}px), -50%) scale(${0.82 + p3 * 0.18})`;
+    }
+
+    // Stage 4 (Final Stage): Outermost Left/Right (10.jpg, 09.jpg)
+    let p4 = Math.min(1, Math.max(0, (progress - 0.70) / 0.28));
+    let x4 = stepX * 4 * p4;
+    let opacity4 = p4 > 0 ? Math.min(1, p4 * 2) * pFade : 0;
+
+    if (fanLeft4) {
+      fanLeft4.style.opacity = opacity4;
+      fanLeft4.style.transform = `translate(calc(-50% - ${x4}px), -50%) scale(${0.78 + p4 * 0.22})`;
+    }
+    if (fanRight4) {
+      fanRight4.style.opacity = opacity4;
+      fanRight4.style.transform = `translate(calc(-50% + ${x4}px), -50%) scale(${0.78 + p4 * 0.22})`;
     }
   }
 

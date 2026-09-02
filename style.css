@@ -1140,6 +1140,11 @@ a {
   opacity: 0;
 }
 
+.fan-left-4, .fan-right-4 {
+  z-index: 2;
+  opacity: 0;
+}
+
 .insight-phone {
   width: 210px;
   height: auto;
