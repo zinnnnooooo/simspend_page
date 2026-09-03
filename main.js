@@ -276,6 +276,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       currentStepIndex = stepIndex;
     }
+
+    const overviewScrollExplore = document.getElementById('overview-scroll-explore');
+    if (overviewScrollExplore) {
+      if (rawProgress >= 0.88) {
+        const exitP = (rawProgress - 0.88) / 0.12;
+        overviewScrollExplore.style.opacity = Math.max(0, 1 - exitP * 1.8).toString();
+      } else {
+        overviewScrollExplore.style.opacity = '1';
+      }
+    }
   }
 
   window.addEventListener('scroll', handleOverviewScroll, { passive: true });
@@ -378,6 +388,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fanRight4) {
       fanRight4.style.opacity = opacity4;
       fanRight4.style.transform = `translate(calc(-50% + ${x4}px), -50%) scale(${0.78 + p4 * 0.22})`;
+    }
+
+    const insightScrollExplore = document.getElementById('insight-scroll-explore');
+    if (insightScrollExplore) {
+      if (rawProgress >= 0.88) {
+        const exitP = (rawProgress - 0.88) / 0.12;
+        insightScrollExplore.style.opacity = Math.max(0, (1 - exitP * 1.8) * pFade).toString();
+      } else {
+        insightScrollExplore.style.opacity = pFade.toString();
+      }
     }
   }
 

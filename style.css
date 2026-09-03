@@ -285,6 +285,24 @@ a {
   50% { transform: translateY(6px); }
 }
 
+/* Reusable theme variations for section scroll indicators */
+.scroll-explore.theme-dark {
+  color: #4A4A4A;
+}
+
+.scroll-explore.theme-light {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.scroll-explore.theme-yellow {
+  color: #111111;
+}
+
+#insight-scroll-explore {
+  z-index: 25;
+}
+
+
 
 /* ==========================================================================
    IPHONE MOCKUP VECTOR SYSTEM
