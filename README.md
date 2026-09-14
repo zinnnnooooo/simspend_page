@@ -183,7 +183,10 @@ simspend_page/
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/zinnnnooooo/simspend_page)
+### **Project 바로가기**
+
+- **GitHub Repository**  
+  [깃허브 바로가기](https://github.com/zinnnnooooo/simspend_page)
 
 ---
 
